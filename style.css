@@ -18,3 +18,7 @@ th {
 tfoot td {
     color: red;
 }
+#category-select{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
