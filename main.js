@@ -25,7 +25,7 @@ addBtn.addEventListener('click', function() {
         return;
     }
     if (isNaN(amount) || amount <=0 ) {
-        alert('Please enter a valid amoun')
+        alert('Please enter a valid amount')
         return;
     }
     if(date === '') {
@@ -37,20 +37,20 @@ addBtn.addEventListener('click', function() {
 
     expenses.push({category, amount, date})
     localStorage.setItem("list", JSON.stringify(expenses))
+    amountInput.value = ""
+    dateInput.value = ""
     render(expenses)
+    
 })
 
 function render(expense){
     let expenseItems = ""
     let total = 0
-    totalAmountCell.innerText = total
+    totalAmountCell.innerText = "$" + total
     for (let i=0; i<expense.length; i++){
-        expenseItems += `<tr id="${[i]}"><td>${expense[i].category}</td><td>${expense[i].amount}</td><td>${expense[i].date}</td><td><button id="delete-btn" onclick="remove(${[i]})">Delete</button></td><tr>`
+        expenseItems += `<tr id="${[i]}"><td>${expense[i].category}</td><td>$${expense[i].amount}</td><td>${expense[i].date}</td><td><button id="delete-btn" onclick="remove(${[i]})">Delete</button></td><tr>`
         total += Number(expense[i].amount);
-        totalAmountCell.innerText = total
-        if(expenses.length === 0){
-            
-        }
+        totalAmountCell.innerText = "$" + total
     }
     expensesTableBody.innerHTML = expenseItems
     
