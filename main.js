@@ -42,10 +42,15 @@ addBtn.addEventListener('click', function() {
 
 function render(expense){
     let expenseItems = ""
+    let total = 0
     for (let i=0; i<expense.length; i++){
         expenseItems += `<tr id="${[i]}"><td>${expense[i].category}</td><td>${expense[i].amount}</td><td>${expense[i].date}</td><td><button id="delete-btn" onclick="remove(${[i]})">Delete</button></td><tr>`
+        
+        total += Number(expense[i].amount);
+        totalAmountCell.innerText = total
     }
     expensesTableBody.innerHTML = expenseItems
+    
 }
 
 function remove(item) {
